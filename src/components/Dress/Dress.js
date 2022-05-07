@@ -15,9 +15,9 @@ const Dress = (props) => {
   <Card.Img variant="top" src={img} />
   <Card.Body>
     <Card.Title>{name}</Card.Title>
-    <Card.Title>{price}</Card.Title>
-    <Card.Title>{quantity}</Card.Title>
-    <Card.Title>{supplierName}</Card.Title>
+    <Card.Title>Price: {price}</Card.Title>
+    <Card.Title>Quantity: {quantity}</Card.Title>
+    <Card.Title>Supplier: {supplierName}</Card.Title>
     <Card.Text>
       {description}
     </Card.Text>
