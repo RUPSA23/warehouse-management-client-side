@@ -3,6 +3,7 @@ import './App.css';
 import Blog from './components/Blog/Blog';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Inventory from './components/Inventory/Inventory';
 import NotFound from './components/NotFound/NotFound';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about">About</Route>
         <Route path="/login">Login</Route>
         <Route path="/logout">Logout</Route>
+        <Route path="/inventory/:id" element={<Inventory></Inventory>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
