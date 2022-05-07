@@ -13,9 +13,23 @@ const Inventory = () => {
         .then(res => res.json())
         .then(data => setDress(data))
     }, []);
+
+    const handleDelivered = () => {
+      const data = {'quantity': dress.quantity-1};
+      
+      const updateUrl = `http://localhost:5000/dress/${id}`;
+      fetch(updateUrl, {
+          method: 'PUT',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data) 
+      })
+      .then(res => res.json())
+      .then(data =>  setDress(data));
+
+    }
     return (
         <div className="Inventory">
-             <Card style={{ width: '18rem' }}>
+  <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src={dress.img} />
   <Card.Body>
     <Card.Title>{dress.name}</Card.Title>
@@ -25,10 +39,17 @@ const Inventory = () => {
     <Card.Text>
      {dress.description}
     </Card.Text>
-    <Button variant="primary" >Delivered</Button>
+    <Button variant="primary" onClick={handleDelivered}>Delivered</Button>
   </Card.Body>
 </Card> 
-        </div>
+<div className="restock-form">
+{/* <form onSubmit={handleRestock}>
+<input type="number" name="number" style={{border: "1px solid red", padding: "5px", margin: "5px"}} />
+<input type="submit" value="Restock" style={{backgroundColor: 'blue', color: 'white', fontWeight: 'bold'}} />
+</form> */}
+
+</div>
+    </div>
     );
 };
 
