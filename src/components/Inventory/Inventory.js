@@ -27,6 +27,19 @@ const Inventory = () => {
       .then(data =>  setDress(data));
 
     }
+    const handleRestock = event => {
+      event.preventDefault();
+        const number = parseInt(event.target.number.value);
+        const updatedQuantity = {'quantity': dress.quantity + number};
+        const Url = `http://localhost:5000/dress/${id}`;
+      fetch(Url, {
+          method: 'PUT',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(updatedQuantity) 
+      })
+      .then(res => res.json())
+      .then(data => setDress(data));
+    }
     return (
         <div className="Inventory">
   <Card style={{ width: '18rem' }}>
@@ -43,10 +56,10 @@ const Inventory = () => {
   </Card.Body>
 </Card> 
 <div className="restock-form">
-{/* <form onSubmit={handleRestock}>
+<form onSubmit={handleRestock}>
 <input type="number" name="number" style={{border: "1px solid red", padding: "5px", margin: "5px"}} />
 <input type="submit" value="Restock" style={{backgroundColor: 'blue', color: 'white', fontWeight: 'bold'}} />
-</form> */}
+</form>
 
 </div>
     </div>
