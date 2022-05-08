@@ -55,12 +55,11 @@ const Inventory = () => {
     <Button variant="primary" onClick={handleDelivered}>Delivered</Button>
   </Card.Body>
 </Card> 
-<div className="restock-form">
-<form onSubmit={handleRestock}>
-<input type="number" name="number" style={{border: "1px solid red", padding: "5px", margin: "5px"}} />
-<input type="submit" value="Restock" style={{backgroundColor: 'blue', color: 'white', fontWeight: 'bold'}} />
+<div className="restock-form" style={{marginLeft: "23px"}}>
+<form  onSubmit={handleRestock}>
+<input type="number" name="number" style={{border: "1px solid red", padding: "5px"}} />
+<input type="submit" value="Restock" style={{backgroundColor: 'blue', color: 'white', fontWeight: 'bold', marginTop: "5px"}} />
 </form>
-
 </div>
     </div>
     );

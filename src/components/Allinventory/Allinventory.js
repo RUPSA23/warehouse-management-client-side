@@ -7,9 +7,14 @@ const Allinventory = (props) => {
   const { _id, name, img, description, price, quantity, supplierName } =
     props.inventory;
   const navigate = useNavigate();
+  
   const navigateToInventoryupdate = (id) => {
     navigate(`/inventory/${id}`);
   };
+
+  const navigateToAddItems = () => {
+    navigate('/add-items');
+  }
 
   
   return (
@@ -24,13 +29,16 @@ const Allinventory = (props) => {
           <Card.Text>{description}</Card.Text>
           <Button
             variant="primary"
-            style={{ marginRight: "8px" }}
+            style={{ marginRight: "5px" }}
             onClick={() => navigateToInventoryupdate(_id)}
           >
             Update
           </Button>
-          <Button variant="primary" onClick={() => props.handleDeleteButton(_id)}>
+          <Button  style={{ marginRight: "5px" }} variant="primary" onClick={() => props.handleDeleteButton(_id)}>
             Delete
+          </Button>
+          <Button variant="primary" onClick={navigateToAddItems}>
+          Add Item
           </Button>
         </Card.Body>
       </Card>
