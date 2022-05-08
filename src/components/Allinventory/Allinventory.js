@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import './Allinventory.css';
 
 const Allinventory = (props) => {
   const { _id, name, img, description, price, quantity, supplierName } =
@@ -14,7 +15,7 @@ const Allinventory = (props) => {
   return (
     <div>
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={img} />
+        <Card.Img className="inventory-img" variant="top" src={img}/>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Title>Price: {price}</Card.Title>
