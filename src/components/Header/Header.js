@@ -30,7 +30,7 @@ const Header = () => {
           :
           <div style={{display: 'flex'}}>
           <Nav.Link href="/login">Login</Nav.Link>
-          <Nav.Link href="/registration">Registration</Nav.Link>
+          <Nav.Link href="/registration">Register</Nav.Link>
           </div>
          
         }

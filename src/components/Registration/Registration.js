@@ -35,12 +35,12 @@ const Registration = () => {
   };
 
   return (
-    <div style={{ marginLeft: "400px", marginRight: "400px" }}>
+    <div style={{ marginLeft: "400px", marginRight: "400px", marginTop: "50px" }}>
       <Form onSubmit={handleFormSubmit}>
         <Form.Group className="mb-3 " controlId="formBasicEmail">
           <Form.Label>
             {" "}
-            <h4>Email address</h4>
+            <h4>Enter your Credentials</h4>
           </Form.Label>
           <Form.Control
             onBlur={handleEmailBlur}
@@ -48,15 +48,11 @@ const Registration = () => {
             placeholder="Enter email"
             style={{ margin: "auto" }}
           />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>
             {" "}
-            <h4> Password</h4>
           </Form.Label>
           <Form.Control
             onBlur={handlePasswordBlur}
