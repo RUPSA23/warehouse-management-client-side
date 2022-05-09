@@ -1,8 +1,12 @@
-import { Button } from "bootstrap";
+import { getAuth } from 'firebase/auth';
 import React from "react";
-import { Form, Row } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
+import app from "../../firebase.init";
+const auth = getAuth(app);
 
 const Additems = () => {
+  const [user] = useAuthState(auth);
+
   const handleAddItem = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -11,8 +15,8 @@ const Additems = () => {
     const supplierName = event.target.supplierName.value;
     const description = event.target.description.value;
     const img = event.target.img.value;
-
-    const Item = { img, name, price, quantity, supplierName, description };
+    const userId = user.email;
+    const Item = { img, name, price, quantity, supplierName, description, userId };
 
     fetch("http://localhost:5000/Items", {
       method: "POST",

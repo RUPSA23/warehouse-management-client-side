@@ -1,25 +1,22 @@
+import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
-import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import {
-  useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import app from "../../firebase.init";
-import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const auth = getAuth(app);
 
-const Login = () => {
+const Registration = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signInWithEmailAndPassword] =
-    useSignInWithEmailAndPassword(auth);
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
-  let from = location.state?.from?.pathname || "/";
+  let from = location.state?.from?.pathname || "/login";
+
+  const Person = { email, password };
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth);
 
   const handleEmailBlur = (event) => {
     setEmail(event.target.value);
@@ -28,15 +25,11 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const handleGoogleSignIn = () => {
-    signInWithGoogle().then(() => {
-      navigate(from, { replace: true });
-    });
-  };
-
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    signInWithEmailAndPassword(email, password).then(() => {
+    createUserWithEmailAndPassword(email, password)
+    .then((data) => {
+      console.log("success", data);
       navigate(from, { replace: true });
     });
   };
@@ -72,23 +65,11 @@ const Login = () => {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Sign In
+          Register
         </Button>
       </Form>
-      <>
-        <div className="mb-2 mt-3">
-          <Button
-            variant="light"
-            size="lg"
-            style={{ border: "2px solid black", fontWeight: "bold" }}
-            onClick={handleGoogleSignIn}
-          >
-            <FcGoogle /> Sign in with Google
-          </Button>
-        </div>
-      </>
     </div>
   );
 };
 
-export default Login;
+export default Registration;
